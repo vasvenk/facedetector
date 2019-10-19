@@ -23,14 +23,18 @@ def detectFace(fileLoc):
         for pic in allPics:
             refPic = face_recognition.load_image_file(pic)
             refEncoded = face_recognition.face_encodings(refPic)
-            print(refEncoded)
+            if len(refEncoded) == 0:
+                continue
             refEncoded = refEncoded[0]
 
             results = face_recognition.compare_faces([target], refEncoded)
 
             if results[0] == True:
-                personVote[person] += 1
-
+                print("This is: " + max(allPeople, key=lambda x: personVote[x]) + "!!\n")
+                return max(allPeople, key=lambda x: personVote[x])
+                
     print("This is: " + max(allPeople, key=lambda x: personVote[x]) + "!!\n")
-
     return max(allPeople, key=lambda x: personVote[x])
+    
+
+    
