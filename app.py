@@ -2,6 +2,8 @@ from flask import Flask, request, jsonify
 import numpy as np
 import os
 
+from doorbellapp.detector import detectFace
+
 # Initialize the Flask application
 app = Flask(__name__)
 
@@ -12,11 +14,15 @@ def test():
     numPics = 0
     while os.path.isfile('/home/nvidia/pics/img%s.jpg' % numPics):
         numPics += 1
-    f = open('/home/nvidia/pics/img%s.jpg' % numPics, 'wb')
+    fileLoc = '/home/nvidia/pics/img%s.jpg' % numPics
+    f = open(fileLoc, 'wb')
     f.write(request.data)
     f.close()
     numPics += 1
     # do some fancy processing here....
+    person = detectFace(fileLoc)
+
+    print("This is: " + person + "!!\n")
 
     resp = jsonify(success=True)
     return resp
