@@ -31,4 +31,6 @@ def detectFace(fileLoc):
             if results[0] == True:
                 personVote[person] += 1
 
+    print("This is: " + max(allPeople, key=lambda x: personVote[x]) + "!!\n")
+
     return max(allPeople, key=lambda x: personVote[x])
