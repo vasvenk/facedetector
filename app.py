@@ -12,6 +12,8 @@ def test():
     
 
     f = open('/home/nvidia/pics/img%s.jpg' % numPics, 'wb')
+    f.write(request.data)
+    f.close()
     numPics += 1
     # do some fancy processing here....
 
