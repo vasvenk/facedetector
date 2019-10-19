@@ -18,7 +18,7 @@ def detectFace(fileLoc):
 
         personLoc = baseLoc + person + "/"
 
-        allPics = [personLoc + f for f in listdir(personLoc) if isfile(join(personLoc, f))]
+        allPics = [personLoc + f for f in listdir(personLoc) if isfile(join(personLoc, f)) and ".jpg" in f]
 
         for pic in allPics:
             refPic = face_recognition.load_image_file(pic)
