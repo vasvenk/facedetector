@@ -22,7 +22,9 @@ def detectFace(fileLoc):
 
         for pic in allPics:
             refPic = face_recognition.load_image_file(pic)
-            refEncoded = face_recognition.face_encodings(refPic)[0]
+            refEncoded = face_recognition.face_encodings(refPic)
+            print(refEncoded)
+            refEncoded = refEncoded[0]
 
             results = face_recognition.compare_faces([target], refEncoded)
 
