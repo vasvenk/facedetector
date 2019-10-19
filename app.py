@@ -1,6 +1,5 @@
 from flask import Flask, request, jsonify
 import numpy as np
-import cv2
 
 # Initialize the Flask application
 app = Flask(__name__)
@@ -16,7 +15,7 @@ def test():
     img = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
 
     # do some fancy processing here....
-    
+
 
     resp = jsonify(success=True)
     return resp
