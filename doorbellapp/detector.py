@@ -8,7 +8,7 @@ baseLoc = "/home/nvidia/innopic/"
 
 def detectFace(fileLoc):
     targetPic = face_recognition.load_image_file(fileLoc)
-    target = face_recognition.face_encodings(picture_of_me)[0]
+    target = face_recognition.face_encodings(targetPic)[0]
 
     personVote = {}
     for person in allPeople:
@@ -20,7 +20,7 @@ def detectFace(fileLoc):
 
         allPics = [personLoc + f for f in listdir(personLoc) if isfile(join(personLoc, f))]
 
-        for pic in allPics
+        for pic in allPics:
             refPic = face_recognition.load_image_file(pic)
             refEncoded = face_recognition.face_encodings(refPic)[0]
 
